@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.Item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
     @Id
@@ -28,6 +31,11 @@ public class OrderItem {
 
     private int orderPrice;
     private int count; // 주문 수량
+
+    // new OrderItem()으로 사용하지 못하게 제한 (@NoArgsConstructor(access = AccessLevel.PROTECTED)로 대체)
+    // 이처럼 코드를 작성할 때 제한 조건을 걸어두며 개발하는 것이 좋음
+    // protected OrderItem() {
+    // }
 
     /**
      * 생성 메서드
