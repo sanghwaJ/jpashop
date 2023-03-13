@@ -95,4 +95,14 @@ public class OrderRepository {
     }
 
     // 동적 쿼리 방법 3 : QueryDSL 사용 (권장 O)
+
+    // fetch join
+    public List<Order> findAllWithMemberDelivery() {
+        // fetch join을 사용하여 실제 값을 DB에서 한 번에 가져옴
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
 }

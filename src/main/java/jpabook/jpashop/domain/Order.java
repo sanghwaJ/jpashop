@@ -62,7 +62,7 @@ public class Order {
     /**
      * 생성 메서드
      */
-    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) { // ...으로 여러 orderItem을 받을 수 있도록 함)
         // OrderItem...으로 하면 OrderItem이 리스트로 넘어감
         Order order = new Order();
         order.setMember(member);
