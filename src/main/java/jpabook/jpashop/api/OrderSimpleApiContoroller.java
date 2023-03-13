@@ -5,6 +5,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
+import jpabook.jpashop.repository.OrderSimpleQueryDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,6 +50,7 @@ public class OrderSimpleApiContoroller {
         return result;
     }
 
+    // 권장 1
     @GetMapping("/api/v3/simple-orders")
     public List<SimpleOrderDto> orderV3() {
         List<Order> orders = orderRepository.findAllWithMemberDelivery();
@@ -57,6 +59,12 @@ public class OrderSimpleApiContoroller {
                 .collect(toList());
 
         return result;
+    }
+
+    // 권장 2
+    @GetMapping("/api/v4/simple-orders")
+    public List<OrderSimpleQueryDto> orderV4() {
+        return orderRepository.findOrderDtos();
     }
 
     @Data
