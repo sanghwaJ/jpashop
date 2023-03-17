@@ -12,6 +12,7 @@ spring:
         # show_sql: true
         format_sql: true
         default_batch_fetch_size: 100 # 웬만하면 옵션을 설정하는 것이 좋음 (디테일하게 설정하고 싶으면 @BatchSize로 적용)
+    open-in-view: false
   h2:
     console:
       enabled: true
